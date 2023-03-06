@@ -6,7 +6,9 @@
 </head>
 <body>
 <h1>Results</h1>
-<p>Your score is: <span th:text="${score}"></span></p>
+<h2>Name: <span th:text="${user.getFirstName()}"></span></h2>
+<p>Your score is: <span th:text="${user.getMyMarks()}"></span></p>
+
 <p>Thanks for taking the test!</p>
 </body>
 </html>

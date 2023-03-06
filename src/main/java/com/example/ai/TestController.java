@@ -1,5 +1,6 @@
 package com.example.ai;
 
+import lombok.Data;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -7,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
 @Controller
 public class TestController {
+    private User useer=new User("Taras");
     private List<Question> questions = Arrays.asList(
             new Question("What is the capital of France?", Arrays.asList(
                     new Option("Paris", 10),
@@ -40,7 +41,8 @@ public class TestController {
         for (Map.Entry<String, String> entry : answers.entrySet()) {
             score += Integer.parseInt(entry.getValue());
         }
-        model.addAttribute("score", score);
+        useer.addMark(score);
+        model.addAttribute("user",useer);
         return "results";
     }
 }
