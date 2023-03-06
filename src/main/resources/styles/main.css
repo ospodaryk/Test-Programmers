@@ -27,9 +27,11 @@ html {
     height: 60px;
 
 }
-.clear:hover{
+
+.clear:hover {
     background-color: #FAD188;
 }
+
 .add_task_formLine {
     width: 350px;
     margin: 20px 0;

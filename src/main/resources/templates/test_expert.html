@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/main.css">
-    <title>Test Novice</title>
+    <title>Test Expert</title>
 </head>
 <body>
 <h1>Test</h1>
-<form th:action="@{/competent/results}" method="post">
+<form th:action="@{/expert/results}" method="post">
     <div th:each="question : ${questions}">
         <h2 th:text="${question.text}"></h2>
         <div th:each="option : ${question.options}">

@@ -69,6 +69,41 @@ public class TestController {
                     new Option("так", 2)
             ))
     );
+    private List<Question> p4questions = Arrays.asList(
+            new Question("Чи  необхідний вам весь контекст задачі?", Arrays.asList(
+                    new Option("так", 5),
+                    new Option("в загальному", 2),
+                    new Option("в окремих випадках", 3)
+            )),
+            new Question("Чи переглядаєте ви свої наміри до вирішення задачі?", Arrays.asList(
+                    new Option("так", 5),
+                    new Option("зрідка", 3),
+                    new Option("коли є потреба", 2)
+            )),
+            new Question("Чи здатні  ви  навчатись у інших?", Arrays.asList(
+                    new Option("коли є потреба", 2),
+                    new Option("зрідка", 3),
+                    new Option("так", 5)
+            ))
+    );
+    private List<Question> p5questions = Arrays.asList(
+            new Question("Чи обираєте ви нові методи своєї роботи?", Arrays.asList(
+                    new Option("так", 5),
+                    new Option("вибірково", 3),
+                    new Option("при емоційному напруженні", 2)
+            )),
+            new Question("Чи допомагає власна інтуїція при вирішенні задач?", Arrays.asList(
+                    new Option("так", 5),
+                    new Option("зрідка", 3),
+                    new Option("коли є потреба", 2)
+            )),
+            new Question("Чи застовуєте рішення задач за аналогією?", Arrays.asList(
+                    new Option("часто", 5),
+                    new Option("зрідка", 3),
+                    new Option("тільки власний варіант", 2)
+            ))
+    );
+
     @GetMapping("/novice")
     public String getTest(Model model) {
         model.addAttribute("questions", p1questions);
@@ -92,10 +127,11 @@ public class TestController {
         findResult(answers, model, 1);
         return "results_beginner";
     }
+
     @GetMapping("/competent")
     public String getTest3(Model model) {
         model.addAttribute("questions", p3questions);
-        return "test_beginner";
+        return "test_competent";
     }
 
     @PostMapping("/competent/results")
@@ -103,6 +139,32 @@ public class TestController {
         findResult(answers, model, 2);
         return "results_competent";
     }
+
+
+    @GetMapping("/proficient")
+    public String getTest4(Model model) {
+        model.addAttribute("questions", p4questions);
+        return "test_proficient";
+    }
+
+    @PostMapping("/proficient/results")
+    public String getResults4(@RequestParam Map<String, String> answers, Model model) {
+        findResult(answers, model, 3);
+        return "results_proficient";
+    }
+
+    @GetMapping("/expert")
+    public String getTest5(Model model) {
+        model.addAttribute("questions", p5questions);
+        return "test_expert";
+    }
+
+    @PostMapping("/expert/results")
+    public String getResults5(@RequestParam Map<String, String> answers, Model model) {
+        findResult(answers, model, 4);
+        return "results_expert";
+    }
+
     private void findResult(Map<String, String> answers, Model model, int part) {
         int score = 0;
         for (Map.Entry<String, String> entry : answers.entrySet()) {
