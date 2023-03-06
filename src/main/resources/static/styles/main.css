@@ -14,7 +14,74 @@ html {
     font-family: Georgia, serif;
 }
 
+.goto {
+    font-family: Georgia, serif;
+    margin-left: 100px;
+    font-size: 30px;
+    width: 50%;
+    height: 55px;
+    font-weight: bold;
+    background-color: #83CEA5;
+    color: #08415C;
+    border-color: #08415C;
+}
+
+.goto:hover {
+    background-color: #53A78A;
+}
+
+/*button {*/
+/*    margin-right: auto;*/
+/*    margin-left: 300px;*/
+/*    height: 60px;*/
+/*    width: 150px;*/
+/*    font-size: 25px;*/
+/*    border-radius: 5px;*/
+/*    background-color: #ae4c57;*/
+/*    border: 2px solid #FAD188;*/
+/*    color: #FAD188;*/
+/*    margin-bottom: 20px;*/
+
+/*    font-family: Georgia, serif;*/
+
+/*}*/
+
+/*/button:hover {*/
+/*    background-color: #6A2E35;*/
+/*}*/
+
+button {
+    height: 100px;
+    font-size: 35px;
+    width: 550px;
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left:42%;
+    position: center;
+    margin-bottom: 20px;
+    background-color: #FBF6A2;
+    border: 3px solid #6A2E35;
+    color: #6A2E35;
+    font-family: Georgia, serif;
+
+}
+
+button:hover {
+    background-color: #FAD188;
+}
+
+.select_o {
+    font-size: 25px;
+    width: 150px;
+    font-family: Georgia, serif;
+    cursor: inherit;
+    line-height: inherit;
+}
+
 .clear {
+    height: 60px;
+    font-size: 25px;
+    width: 150px;
     border-radius: 5px;
     margin-left: 1215px;
     margin-bottom: 5px;
@@ -22,9 +89,6 @@ html {
     border: 2px solid #6A2E35;
     color: #6A2E35;
     font-family: Georgia, serif;
-    font-size: 35px;
-    width: 190px;
-    height: 60px;
 
 }
 
@@ -41,13 +105,19 @@ html {
     float: left;
 }
 
-.input input, textarea {
+.input textarea {
     margin-left: 20px;
     font-size: 25px;
     font-family: Georgia, serif;
     border: 2px solid #08415C;
     size: 100px;
+    font-size: 25px;
     width: 350px;
+}
+input[type=radio] {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
 }
 
 .add_task_select select {
@@ -70,13 +140,13 @@ form {
     margin-left: auto;
     margin-right: auto;
     /*margin-left: 20px;*/
-    width: 400px;
+    width: 1200px;
     border: 2px solid #08415C;
 }
 
 .submit input {
     font-family: Georgia, serif;
-    margin-left: 100px;
+    /*margin-left: 100px;*/
     font-size: 30px;
     width: 50%;
     height: 55px;
@@ -84,6 +154,13 @@ form {
     background-color: #83CEA5;
     color: #08415C;
     border-color: #08415C;
+}
+
+.title_edit {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    width: auto;
+    height: 55px;
 }
 
 .submit input:hover {
@@ -143,7 +220,7 @@ h1 {
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
     /*padding: 2px;*/
     color: #08415C;
@@ -155,7 +232,15 @@ h3 {
     /*padding: 2px;*/
     color: #08415C;
 }
+label{
 
+    /*margin-left: 15px;*/
+    font-size: 25px;
+    /*!*padding: 2px;*!*/
+    color: #08415C;
+
+
+}
 
 textarea {
     resize: none;
@@ -177,7 +262,7 @@ tr, td, th {
 .delete_button {
     width: 20px;
     height: 20px;
-    background-image: url("/images/delete.png");
+    /*background-image: url("/images/delete.png");*/
     background-color: #6A2E35;
 }
 

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/main.css">
+    <link href="../static/styles/main.css" th:href="@{/styles/main.css}" rel="stylesheet"/>
 
     <title>Test Advanced beginner</title>
 </head>
@@ -12,7 +12,7 @@
     <div th:each="question : ${questions}">
         <h2 th:text="${question.text}"></h2>
         <div th:each="option : ${question.options}">
-            <input type="radio" th:name="${question.text}" th:value="${option.grade}"/>
+            <input type="radio"  th:name="${question.text}" th:value="${option.grade}" required/>
             <label th:text="${option.text}"></label>
         </div>
         <hr/>
