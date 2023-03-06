@@ -36,7 +36,7 @@ public class TestController {
             ))
     );
     private List<Question> p2questions = Arrays.asList(
-            new Question("Чи використовуєте власний досвід при вирішенні задач?(зрідка(5), частково(3), ні(2)", Arrays.asList(
+            new Question("Чи використовуєте власний досвід при вирішенні задач?", Arrays.asList(
                     new Option("зрідка", 5),
                     new Option("частково", 3),
                     new Option("ні", 2)
@@ -52,31 +52,57 @@ public class TestController {
                     new Option("так", 2)
             ))
     );
-
-    @GetMapping("/test1")
+    private List<Question> p3questions = Arrays.asList(
+            new Question("Чи можете ви побудувати модель вирішуваної задачі?", Arrays.asList(
+                    new Option("так", 5),
+                    new Option("не повністю", 3),
+                    new Option("в окремих випадках", 2)
+            )),
+            new Question("Чи вистачає вам ініціативи при вирішенні задач?", Arrays.asList(
+                    new Option("так", 5),
+                    new Option("зрідка", 3),
+                    new Option("потрібне натхнення", 2)
+            )),
+            new Question("Чи можете вирішувати проблеми, з якими ще не стикались?", Arrays.asList(
+                    new Option("в окремих випадках", 3),
+                    new Option("ні", 5),
+                    new Option("так", 2)
+            ))
+    );
+    @GetMapping("/novice")
     public String getTest(Model model) {
         model.addAttribute("questions", p1questions);
-        return "test_p1";
+        return "test_novice";
     }
 
-    @PostMapping("/results1")
+    @PostMapping("/novice/results")
     public String getResults(@RequestParam Map<String, String> answers, Model model) {
         findResult(answers, model, 0);
-        return "results_p1";
+        return "results_novice";
     }
 
-    @GetMapping("/test2")
+    @GetMapping("/beginner")
     public String getTest2(Model model) {
         model.addAttribute("questions", p2questions);
-        return "test_p2";
+        return "test_beginner";
     }
 
-    @PostMapping("/results2")
+    @PostMapping("/beginner/results")
     public String getResults2(@RequestParam Map<String, String> answers, Model model) {
         findResult(answers, model, 1);
-        return "results_p2";
+        return "results_beginner";
+    }
+    @GetMapping("/competent")
+    public String getTest3(Model model) {
+        model.addAttribute("questions", p3questions);
+        return "test_beginner";
     }
 
+    @PostMapping("/competent/results")
+    public String getResults3(@RequestParam Map<String, String> answers, Model model) {
+        findResult(answers, model, 2);
+        return "results_competent";
+    }
     private void findResult(Map<String, String> answers, Model model, int part) {
         int score = 0;
         for (Map.Entry<String, String> entry : answers.entrySet()) {
@@ -91,7 +117,4 @@ public class TestController {
         model.addAttribute("user", useer);
     }
 
-    public void findResult() {
-
-    }
 }
