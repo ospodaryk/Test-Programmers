@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/main.css">
 
-    <title>Test</title>
+    <title>Test Advanced beginner</title>
 </head>
 <body>
 <h1>Test</h1>
-<form th:action="@{/results2}" method="post">
+<form th:action="@{/beginner/results}" method="post">
     <div th:each="question : ${questions}">
         <h2 th:text="${question.text}"></h2>
         <div th:each="option : ${question.options}">
