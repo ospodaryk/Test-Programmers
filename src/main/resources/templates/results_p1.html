@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Results</title>
+  <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
 <h1>Results</h1>
 <h2>Name: <span th:text="${user.getFirstName()}"></span></h2>
-<p>Your score is: <span th:text="${user.getMyMarks()}"></span></p>
+<p>Your score is: <span th:text="${user.getMyMarks().get(0)}"></span></p>
 
 <p>Thanks for taking the test!</p>
 </body>

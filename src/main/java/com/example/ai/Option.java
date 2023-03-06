@@ -1,4 +1,5 @@
 package com.example.ai;
+
 public class Option {
     private String text;
     private int grade;

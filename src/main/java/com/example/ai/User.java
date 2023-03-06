@@ -14,7 +14,7 @@ public class User {
 
     public User(String firstName) {
         this.firstName = firstName;
-        this.myMarks=new ArrayList<>();
+        this.myMarks = new ArrayList<>();
     }
 
     private List<Integer> myMarks;
