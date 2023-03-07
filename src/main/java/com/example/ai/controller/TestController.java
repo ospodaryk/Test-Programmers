@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class TestController {
@@ -22,6 +19,15 @@ public class TestController {
     private List<Question> p3questions = Arrays.asList(new Question("Чи можете ви побудувати модель вирішуваної задачі", Arrays.asList(new Option("так", 5), new Option("не повністю", 3), new Option("в окремих випадках", 2))), new Question("Чи вистачає вам ініціативи при вирішенні задач", Arrays.asList(new Option("так", 5), new Option("зрідка", 3), new Option("потрібне натхнення", 2))), new Question("Чи можете вирішувати проблеми, з якими ще не стикались", Arrays.asList(new Option("в окремих випадках", 3), new Option("ні", 5), new Option("так", 2))));
     private List<Question> p4questions = Arrays.asList(new Question("Чи  необхідний вам весь контекст задачі", Arrays.asList(new Option("так", 5), new Option("в загальному", 2), new Option("в окремих випадках", 3))), new Question("Чи переглядаєте ви свої наміри до вирішення задачі", Arrays.asList(new Option("так", 5), new Option("зрідка", 3), new Option("коли є потреба", 2))), new Question("Чи здатні  ви  навчатись у інших", Arrays.asList(new Option("коли є потреба", 2), new Option("зрідка", 3), new Option("так", 5))));
     private List<Question> p5questions = Arrays.asList(new Question("Чи обираєте ви нові методи своєї роботи", Arrays.asList(new Option("так", 5), new Option("вибірково", 3), new Option("при емоційному напруженні", 2))), new Question("Чи допомагає власна інтуїція при вирішенні задач", Arrays.asList(new Option("так", 5), new Option("зрідка", 3), new Option("коли є потреба", 2))), new Question("Чи застовуєте рішення задач за аналогією", Arrays.asList(new Option("часто", 5), new Option("зрідка", 3), new Option("тільки власний варіант", 2))));
+
+private Map<String,Integer> result=new HashMap<>();
+    @GetMapping("/result")
+    public String getResults(Model model) {
+        model.addAttribute("user", useer);
+
+        model.addAttribute("marks", useer.getMyMarks());
+        return "result";
+    }
 
     @GetMapping("/novice")
     public String getTest(Model model) {
