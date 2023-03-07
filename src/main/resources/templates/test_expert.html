@@ -11,9 +11,9 @@
 <h1>Експерт | Cписок питань:</h1>
 <form th:action="@{/expert/results}" method="post">
     <div th:each="question : ${questions}">
-        <h2 th:text="${question.text}"></h2>
+        <h2 th:text="${question.text}+'?'"></h2>
         <div th:each="option : ${question.options}">
-            <input type="radio" th:name="${question.text}" th:value="${option.grade}" required/>
+            <input type="radio" th:name="${question.text}+'?'" th:value="${option.grade}" required/>
             <label th:text="${option.text}"></label>
         </div>
         <hr/>

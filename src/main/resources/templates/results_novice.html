@@ -10,7 +10,7 @@
 
 <h1>Результат</h1>
 <h2>Загальний бал за блок Новачок: <span th:text="${user.getMyMarks().get(0)}"></span></h2>
-<h2>Загальнийу бал: <span th:text="${user.sum()}"></span></h2>
+<h2>Загальний бал: <span th:text="${user.sum()}"></span></h2>
 <hr>
 <script>
     var xValues = ["Переживаєте за успіх в роботі", "Прагнете досягти швидко результату", "Легко попадаєте в тупик при проблемах в роботі", "Чи потрібен чіткий алгоритм для вирішення задач"];
@@ -25,7 +25,7 @@
 
 <hr>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<canvas id="myChart" style="position:center;width:100%;max-width:1000px; "></canvas>
 <script>
     yValues.push(0);
     var barColors = ["red", "green", "blue", "orange", "brown", "pink"];
@@ -39,15 +39,12 @@
             }]
         },
         options: {
-
             legend: {display: false},
             title: {
-                display: true,
-                text: "Наявну кількість кожного із типів фігур"
+                display: false,
             }
         }
     });
 </script>
-
 </body>
 </html>

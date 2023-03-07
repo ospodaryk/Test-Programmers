@@ -8,8 +8,44 @@
 <body>
 <div th:insert="header.html"></div>
 
-<h1>Results Proficient</h1>
-<h3>Ваш результат: <span th:text="${user.getMyMarks().get(3)}"></span></h3>
 
+<h1>Результат Досвідчений</h1>
+<h2>Загальний бал за блок Новачок: <span th:text="${user.getMyMarks().get(0)}"></span></h2>
+<h2>Загальний бал: <span th:text="${user.sum()}"></span></h2>
+<hr>
+<script>
+    var xValues = ["Чи  необхідний вам весь контекст задачі", "Чи переглядаєте ви свої наміри до вирішення задачі", "Чи здатні  ви  навчатись у інших "];
+    var yValues = [];</script>
+<div th:each="question : ${questions}">
+    <h3 th:text="${question.getText() + ' - ' + question.getResult()}"></h3>
+    <script>
+        yValues.push([[${question.getResult()}]]);
+    </script>
+</div>
+
+
+<hr>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+<script>
+    yValues.push(0);
+    var barColors = ["red", "green", "blue", "orange", "brown", "pink"];
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: {display: false},
+            title: {
+                display: false,
+            }
+        }
+    });
+</script>
 </body>
 </html>

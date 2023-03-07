@@ -44,7 +44,9 @@ button {
     font-size: 35px;
     width: 550px;
     border-radius: 5px;
-    margin-left:32%;
+    margin-left:50%;
+    /*margin-right:600px;*/
+
     position: center;
     margin-bottom: 20px;
     background-color: #FBF6A2;
