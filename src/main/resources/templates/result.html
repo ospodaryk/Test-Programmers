@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link href="../static/styles/main.css" th:href="@{/styles/main.css}" rel="stylesheet"/>
+
+  <title>Results</title>
+</head>
+<body>
+<div th:insert="header.html"></div>
+
+
+<h1>Результат</h1>
+<h2>Загальні бали: <span th:text="${user.sum()}"></span></h2>
+<hr>
+<script>
+  var xValues = ["Новачок","Твердий початківець","Компетентний", "Досвідчений", "Експерт"];
+  var yValues = [];</script>
+<div th:each="question : ${marks}">
+  <script>
+    yValues.push([[${question}]]);
+  </script>
+</div>
+
+
+<hr>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<canvas id="myChart" style="width:100%;max-width:1200px; "></canvas>
+<script>
+  yValues.push(0);
+  var barColors = ["red", "green", "blue", "orange", "brown", "pink"];
+  new Chart("myChart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: false,
+      }
+    }
+  });
+</script>
+</body>
+</html>
