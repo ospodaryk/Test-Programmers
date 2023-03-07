@@ -6,17 +6,18 @@
     <title>Test Expert</title>
 </head>
 <body>
-<h1>Test</h1>
+<div th:insert="header.html"></div>
+<h1>Досвідчений | Cписок питань:</h1>
 <form th:action="@{/expert/results}" method="post">
     <div th:each="question : ${questions}">
         <h2 th:text="${question.text}"></h2>
         <div th:each="option : ${question.options}">
             <input type="radio" th:name="${question.text}" th:value="${option.grade}" required/>
-            <h3 th:text="${option.text}"></h3>
+            <label th:text="${option.text}"></label>
         </div>
         <hr/>
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit">Побачити результат</button>
 </form>
 </body>
 </html>

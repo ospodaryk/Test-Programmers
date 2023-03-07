@@ -1,4 +1,4 @@
-package com.example.ai;
+package com.example.ai.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

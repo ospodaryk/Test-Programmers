@@ -7,17 +7,19 @@
     <title>Test Advanced beginner</title>
 </head>
 <body>
-<h1>Test</h1>
+<div th:insert="header.html"></div>
+
+<h1>Твердий початківець | Cписок питань:</h1>
 <form th:action="@{/beginner/results}" method="post">
     <div th:each="question : ${questions}">
         <h2 th:text="${question.text}"></h2>
         <div th:each="option : ${question.options}">
-            <input type="radio"  th:name="${question.text}" th:value="${option.grade}" required/>
+            <input type="radio" th:name="${question.text}" th:value="${option.grade}" required/>
             <label th:text="${option.text}"></label>
         </div>
         <hr/>
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit">Побачити результат</button>
 </form>
 </body>
 </html>

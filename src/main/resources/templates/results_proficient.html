@@ -6,9 +6,10 @@
     <link href="../static/styles/main.css" th:href="@{/styles/main.css}" rel="stylesheet"/>
 </head>
 <body>
+<div th:insert="header.html"></div>
+
 <h1>Results Proficient</h1>
 <h3>Ваш результат: <span th:text="${user.getMyMarks().get(3)}"></span></h3>
 
-<p>Thanks for taking the test!</p>
 </body>
 </html>

@@ -1,11 +1,15 @@
-package com.example.ai;
+package com.example.ai.controller;
 
+import com.example.ai.model.Option;
+import com.example.ai.model.Question;
+import com.example.ai.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -14,22 +18,22 @@ import java.util.Map;
 public class TestController {
     private User useer = new User("Taras");
     private List<Question> p1questions = Arrays.asList(
-            new Question("Переживаєте за успіх в роботі?", Arrays.asList(
+            new Question("Переживаєте за успіх в роботі", Arrays.asList(
                     new Option("сильно", 5),
                     new Option("не дуже", 3),
                     new Option("спокійний", 2)
             )),
-            new Question("Прагнете досягти швидко результату?", Arrays.asList(
+            new Question("Прагнете досягти швидко результату", Arrays.asList(
                     new Option("поступово", 2),
                     new Option("якомога швидше", 3),
                     new Option("дуже", 5)
             )),
-            new Question("Легко попадаєте в тупик при проблемах в роботі?", Arrays.asList(
+            new Question("Легко попадаєте в тупик при проблемах в роботі", Arrays.asList(
                     new Option("неодмінно", 5),
                     new Option("поступово", 3),
                     new Option("зрідка", 2)
             )),
-            new Question("Чи   потрібен чіткий алгоритм для вирішення задач?", Arrays.asList(
+            new Question("Чи   потрібен чіткий алгоритм для вирішення задач", Arrays.asList(
                     new Option("так", 5),
                     new Option("окремих випадках", 3),
                     new Option("не потрібен", 2)
@@ -113,6 +117,8 @@ public class TestController {
     @PostMapping("/novice/results")
     public String getResults(@RequestParam Map<String, String> answers, Model model) {
         findResult(answers, model, 0);
+        model.addAttribute("questions", p1questions);
+
         return "results_novice";
     }
 
@@ -167,15 +173,17 @@ public class TestController {
 
     private void findResult(Map<String, String> answers, Model model, int part) {
         int score = 0;
+        int i=0;
         for (Map.Entry<String, String> entry : answers.entrySet()) {
             score += Integer.parseInt(entry.getValue());
+            p1questions.get(i).setResult(Integer.parseInt(entry.getValue()));
+            i++;
         }
         try {
             useer.getMyMarks().set(part, score);
         } catch (Exception e) {
             useer.addMark(score);
         }
-
         model.addAttribute("user", useer);
     }
 

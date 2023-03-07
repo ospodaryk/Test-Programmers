@@ -6,7 +6,9 @@
     <link href="../static/styles/main.css" th:href="@{/styles/main.css}" rel="stylesheet"/>
 </head>
 <body>
-<h1>Test</h1>
+<div th:insert="header.html"></div>
+
+<h1>Експерт | Cписок питань:</h1>
 <form th:action="@{/expert/results}" method="post">
     <div th:each="question : ${questions}">
         <h2 th:text="${question.text}"></h2>
@@ -16,7 +18,7 @@
         </div>
         <hr/>
     </div>
-    <button type="submit">Submit</button>
+    <button  type="submit">Побачити результат</button>
 </form>
 </body>
 </html>
